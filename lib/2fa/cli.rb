@@ -32,8 +32,8 @@ module TwoFactorAuth
       return errors if errors
       return arguments.to_s if options.mode == :help 
 
-      # if we get here, we have valid command line argument
-      # .2fa file could be anywhere, but we chose to have it the current directory
+      # if we get here, we have valid command line arguments
+      # .2fa file could be anywhere, but we chose to have it in the current working directory
       g = gen_keychain(File.join(ENV['PWD'], '.2fa'))
       if options.mode == :list
         g.display_all

@@ -26,7 +26,7 @@ module TwoFactorAuth
     end
 
     def default_options
-      OpenStruct.new mode: ''
+      OpenStruct.new mode: '', raw: arguments # <~ ARGV
     end
 
     def parse

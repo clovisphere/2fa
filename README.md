@@ -19,7 +19,7 @@ The new key generates a time-based (TOTP) authentication codes made up of 6-digi
 
 `2fa [NAME]` prints a two-factor authentication code from the key with the given name.
 
-The keychain is stored encrypted in the text file `$PWD/.2fa`.
+The keychain is stored unencrypted in the file `$PWD/.2fa`.
 
 # Example
 

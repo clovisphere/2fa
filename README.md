@@ -6,18 +6,18 @@
 Usage:
 
 ```bash
-2fa -add name
-2fa -list
-2fa name
+2fa --name [NAME]
+2fa [NAME]
+2fa --list
 ```
 
-`2fa -add name` adds a new key to the 2fa keychain with the given name. It prints a prompt to standard output and reads a two-factor key from standard input.
+`2fa --name [NAME]` adds a new key to the 2fa keychain with the given name. It prints a prompt to standard output and reads a two-factor key from standard input.
 
 The new key generates a time-based (TOTP) authentication codes made up of 6-digit.
 
-`2fa -list` lists the names of all the keys in the keychain.
+`2fa --list` lists the names of all the keys in the keychain.
 
-`2fa name` prints a two-factor authentication code from the key with the given name. If `-clip` is specified, 2fa also copies the code to the system clipboard.
+`2fa [NAME]` prints a two-factor authentication code from the key with the given name.
 
 The keychain is stored encrypted in the text file `$PWD/.2fa`.
 
@@ -28,7 +28,7 @@ During Twitter 2FA setup, at the "scan the following QR code with your camera" s
 Add it to 2fa under the name twitter, typing the secret at the prompt:
 
 ```bash
-$ 2fa -add twitter
+$ 2fa --name twitter
 2fa key for twitter: KERZ 2YRQ INYK 7GH4
 $
 ```
@@ -40,10 +40,10 @@ $ 2fa twitter
 $
 ```
 
-Or to type less:
+Or list the names of all keys:
 
 ```bash
-$ 2fa
-268346	twitter
+$ 2fa --list
+twitter
 $
 ```

@@ -5,7 +5,7 @@
 
 Usage:
 
-```console
+```bash
 2fa -add name
 2fa -list
 2fa name
@@ -27,14 +27,14 @@ During Twitter 2FA setup, at the "scan the following QR code with your camera" s
 
 Add it to 2fa under the name twitter, typing the secret at the prompt:
 
-```console
+```bash
 $ 2fa -add twitter
 2fa key for twitter: KERZ 2YRQ INYK 7GH4
 $
 ```
 Then whenever Twitter prompts for a 2FA code, run 2fa to obtain one:
 
-```console
+```bash
 $ 2fa twitter
 268346
 $
@@ -42,7 +42,7 @@ $
 
 Or to type less:
 
-```console
+```bash
 $ 2fa
 268346	twitter
 $

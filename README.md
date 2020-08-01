@@ -23,7 +23,7 @@ The keychain is stored encrypted in the text file `$PWD/.2fa`.
 
 # Example
 
-During Twitter 2FA setup, at the "scan the following QR code with your camera" step, click the "Can’t scan QR code?" link. A new window is shown with a code - *a bold string of letters and digits*.
+During Twitter 2FA setup, at the "scan the following QR code with your camera" step, click the "Can’t scan QR code?" link. A new window is shown with a code - **a bold string of letters and digits**.
 
 Add it to 2fa under the name twitter, typing the secret at the prompt:
 

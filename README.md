@@ -1,7 +1,7 @@
 
 2fa is a two-factor authentication agent.
 
-> 2fa is based on Russ Cox's [2fa](https://github.com/rsc/2fa) library, written in [go](https://golang.org/). I thought it would be a good exercise re-writing it in [Ruby](https://www.ruby-lang.org/en/).
+> 2fa is based on Russ Cox's [2fa](https://github.com/rsc/2fa) library, written in [go](https://golang.org/). I thought re-writing it in [Ruby](https://www.ruby-lang.org/en/) would be a good exercise.
 
 Usage:
 

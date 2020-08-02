@@ -11,21 +11,19 @@ module TwoFactorAuth
       @keys = keys
     end
 
-    def add(name, size=6)
+    def add(name)
       if keys.include? name
         return red "Error: '#{name}' already exists in keychain"
-      end
+      end 
       print "2fa key for #{name}: "
-      passphrase = STDIN.gets.chop.downcase
-      passphrase = self.encode(passphrase.gsub(/\s/, ''))
-      begin
-        self.decode(passphrase)
-      rescue ArgumentError => e
-        return red "Error: #{e.message}"
+      passphrase = STDIN.gets.chop.downcase.gsub(/\s/, '')
+      if passphrase.empty?
+        return red "Error: key cannot be empty"
       end
+      passphrase = self.encode(passphrase)
       # if all goes well, save to file
       File.open(file, 'a') do |f|
-        line = "#{name} #{size} #{passphrase}".bytes
+        line = "#{name} #{passphrase}".bytes
         f.print line, f.puts
         "\t#{name} was added successfully to the keychain ✅" if File.chmod(0600, file)
       end
@@ -36,7 +34,7 @@ module TwoFactorAuth
       if key.empty?
         red "Error: no such key '#{name}'"
       else
-        totp = ROTP::TOTP.new(decode(key[:secret]), issuer: name)
+        totp = ROTP::TOTP.new(self.decode(key[:secret]), issuer: name)
         totp.now
       end
     end
@@ -58,7 +56,13 @@ module TwoFactorAuth
     end
 
     def decode(str)
-      Base64.strict_decode64(str)
+      begin
+        Base64.strict_decode64(str)
+      rescue ArgumentError => e
+        # TODO: find a better way to handle the error
+        # for now, abort
+        abort(red "Error: #{e.message}")
+      end
     end
 
     def red(string)

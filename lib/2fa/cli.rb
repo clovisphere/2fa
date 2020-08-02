@@ -15,7 +15,7 @@ module TwoFactorAuth
     end
 
     def errors
-      if %i[name].include? options.mode
+      if %i[add].include? options.mode
         if options.name.nil?
           return red 'You must also specify a --name. Try --help for help.'
         end
@@ -37,7 +37,7 @@ module TwoFactorAuth
       g = gen_keychain(File.join(ENV['PWD'], '.2fa'))
       if options.mode == :list
         g.display_all
-      elsif options.mode == :name
+      elsif options.mode == :add
         g.add(options.name.downcase)
       else
         g.display(options.raw[0].downcase)
@@ -65,7 +65,7 @@ module TwoFactorAuth
           col = line.pack('c*').split
           name = col[0]
           if g.keys[name].empty?
-            g.keys[name] = {size: col[1], secret: col[2]}
+            g.keys[name] = {secret: col[1]}
           end
           next
         end

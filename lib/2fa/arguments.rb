@@ -54,7 +54,7 @@ module TwoFactorAuth
         end
 
         parser.on('-n', '--name [NAME]', 'Add new key to the keychain') do |name|
-          options!.mode = :name
+          options!.mode = :add
           options!.name = name
         end
 
